@@ -22,17 +22,23 @@
           flex-box="0"
         >
           <h2
+            v-show="hidden"
             style="color: dodgerblue;font-size: 1.25em"
             v-if="
               themeActiveSetting.name === 'd2' ||
                 themeActiveSetting.name === 'line'
             "
           >
-            My Blog
+            Blog Adain
           </h2>
           <h2 style="color: white;font-size: 1.15em" v-else>My Blog</h2>
         </router-link>
-        <div class="toggle-aside-btn" @click="handleToggleAside" flex-box="0">
+        <div
+          v-show="hidden"
+          class="toggle-aside-btn"
+          @click="handleToggleAside"
+          flex-box="0"
+        >
           <d2-icon name="bars" />
         </div>
         <!-- <d2-menu-header flex-box="1"/> -->
@@ -40,56 +46,70 @@
         <div class="d2-header-right">
           <!-- 如果你只想在开发环境显示这个按钮请添加 v-if="$env === 'development'" -->
           <!-- <d2-header-search @click="handleSearchClick"/> -->
-          <d2-header-user />
-          <d2-header-log/>
+          <template v-show="hidden">
+            <d2-header-user />
+            <d2-header-log />
+          </template>
+          <d2-header-show />
         </div>
       </div>
-      <!-- 下面 主体 -->
-      <div class="d2-theme-container" flex-box="1" flex>
-        <!-- 主体 侧边栏 -->
+      <div v-show="hidden" style="width: 100%;height: 100%;">
+        <!-- 下面 主体 -->
         <div
-          flex-box="0"
-          ref="aside"
-          :class="{
-            'd2-theme-container-aside': true,
-            'd2-theme-container-transition': asideTransition
-          }"
-          :style="{
-            width: asideCollapse ? asideWidthCollapse : asideWidth,
-            opacity: this.searchActive ? 0.5 : 1
-          }"
+          class="d2-theme-container"
+          flex-box="1"
+          flex
+          style="width: 100%;height: 100%;"
         >
-          <d2-menu-side />
-        </div>
-        <!-- 主体 -->
-        <div class="d2-theme-container-main" flex-box="1" flex>
-          <!-- 搜索 -->
-          <transition name="fade-scale">
-            <div v-if="searchActive" class="d2-theme-container-main-layer" flex>
-              <d2-panel-search ref="panelSearch" @close="searchPanelClose" />
-            </div>
-          </transition>
-          <!-- 内容 -->
-          <transition name="fade-scale">
-            <div
-              v-if="!searchActive"
-              class="d2-theme-container-main-layer"
-              flex="dir:top"
-            >
-              <!-- tab -->
-              <div class="d2-theme-container-main-header" flex-box="0">
-                <d2-tabs />
+          <!-- 主体 侧边栏 -->
+          <div
+            flex-box="0"
+            ref="aside"
+            :class="{
+              'd2-theme-container-aside': true,
+              'd2-theme-container-transition': asideTransition
+            }"
+            :style="{
+              width: asideCollapse ? asideWidthCollapse : asideWidth,
+              opacity: this.searchActive ? 0.5 : 1
+            }"
+          >
+            <d2-menu-side />
+          </div>
+          <!-- 主体 -->
+          <div class="d2-theme-container-main" flex-box="1" flex>
+            <!-- 搜索 -->
+            <transition name="fade-scale">
+              <div
+                v-if="searchActive"
+                class="d2-theme-container-main-layer"
+                flex
+              >
+                <d2-panel-search ref="panelSearch" @close="searchPanelClose" />
               </div>
-              <!-- 页面 -->
-              <div class="d2-theme-container-main-body" flex-box="1">
-                <transition :name="transitionActive ? 'fade-transverse' : ''">
-                  <keep-alive :include="keepAlive">
-                    <router-view />
-                  </keep-alive>
-                </transition>
+            </transition>
+            <!-- 内容 -->
+            <transition name="fade-scale">
+              <div
+                v-if="!searchActive"
+                class="d2-theme-container-main-layer"
+                flex="dir:top"
+              >
+                <!-- tab -->
+                <div class="d2-theme-container-main-header" flex-box="0">
+                  <d2-tabs />
+                </div>
+                <!-- 页面 -->
+                <div class="d2-theme-container-main-body" flex-box="1">
+                  <transition :name="transitionActive ? 'fade-transverse' : ''">
+                    <keep-alive :include="keepAlive">
+                      <router-view />
+                    </keep-alive>
+                  </transition>
+                </div>
               </div>
-            </div>
-          </transition>
+            </transition>
+          </div>
         </div>
       </div>
     </div>
@@ -97,17 +117,11 @@
 </template>
 
 <script>
-import d2MenuSide from "./components/menu-side";
-import d2MenuHeader from "./components/menu-header";
 import d2Tabs from "./components/tabs";
-import d2HeaderFullscreen from "./components/header-fullscreen";
-import d2HeaderLocales from "./components/header-locales";
-// import d2HeaderSearch from './components/header-search'
-import d2HeaderSize from "./components/header-size";
-import d2HeaderTheme from "./components/header-theme";
+import d2MenuSide from "./components/menu-side";
 import d2HeaderUser from "./components/header-user";
 import d2HeaderLog from "./components/header-log";
-import d2HeaderColor from "./components/header-color";
+import d2HeaderShow from "./components/header-show";
 import { mapActions, mapGetters, mapState } from "vuex";
 import mixinSearch from "./mixins/search";
 
@@ -116,16 +130,10 @@ export default {
   mixins: [mixinSearch],
   components: {
     d2MenuSide,
-    d2MenuHeader,
-    d2Tabs,
-    d2HeaderFullscreen,
-    d2HeaderLocales,
-    // d2HeaderSearch,
-    d2HeaderSize,
-    d2HeaderTheme,
     d2HeaderUser,
     d2HeaderLog,
-    d2HeaderColor
+    d2HeaderShow,
+    d2Tabs
   },
   data() {
     return {
@@ -141,7 +149,8 @@ export default {
       grayActive: state => state.gray.active,
       transitionActive: state => state.transition.active,
       asideCollapse: state => state.menu.asideCollapse,
-      asideTransition: state => state.menu.asideTransition
+      asideTransition: state => state.menu.asideTransition,
+      hidden: state => state.common.hidden
     }),
     ...mapGetters("d2admin", {
       themeActiveSetting: "theme/activeSetting"
@@ -165,6 +174,9 @@ export default {
     handleToggleAside() {
       this.asideCollapseToggle();
     }
+  },
+  mounted() {
+    console.log(this.hidden);
   }
 };
 </script>

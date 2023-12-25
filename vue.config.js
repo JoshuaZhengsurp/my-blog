@@ -13,8 +13,8 @@ process.env.VUE_APP_VERSION = require('./package.json').version
 process.env.VUE_APP_BUILD_TIME = require('dayjs')().format('YYYY-M-D HH:mm:ss')
 
 // 基础路径 注意发布之前要先修改这里
-const publicPath = process.env.NODE_ENV === 'development' ? process.env.VUE_APP_PUBLIC_PATH || '/' : 'https://gcore.jsdelivr.net/gh/zhaoyangkun/aries@latest/resources/admin'
-// https://gh.sourcegcdn.com/zhaoyangkun/aries/v1.2.3/resources/admin
+const publicPath = process.env.NODE_ENV === 'development' ? process.env.VUE_APP_PUBLIC_PATH || '/' : 'https://gcore.jsdelivr.net/gh/zhaoyangkun/admin@latest/resources/admin'
+// https://gh.sourcegcdn.com/zhaoyangkun/admin/v1.2.3/resources/admin
 // const publicPath = process.env.VUE_APP_PUBLIC_PATH || '/' // 开发环境
 // const publicPath = './' // 生产环境
 
@@ -40,7 +40,7 @@ const pages = undefined
 module.exports = {
   // 根据你的实际情况更改这里
   publicPath,
-  lintOnSave: true,
+  lintOnSave: false,
   filenameHashing: false,
   devServer: {
     proxy: {

@@ -3,7 +3,7 @@ import Vue from 'vue'
 import i18n from './i18n'
 import App from './App'
 // 核心插件
-import d2Admin from '@/plugin/d2admin'
+import d2admin from '@/plugin/d2admin'
 // store
 import store from '@/store/index'
 
@@ -12,7 +12,7 @@ import router from './router'
 import { menuHeader, menuAside } from '@/menu'
 import { frameInRoutes } from '@/router/routes'
 // 核心插件
-Vue.use(d2Admin)
+Vue.use(d2admin)
 
 new Vue({
   router,

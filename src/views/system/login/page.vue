@@ -95,7 +95,7 @@
 import dayjs from 'dayjs'
 import { mapActions } from 'vuex'
 import localeMixin from '@/locales/mixin.js'
-import { createCaptcha } from '@/api/aries/auth'
+import { createCaptcha } from '@/api/admin/auth'
 
 export default {
   mixins: [

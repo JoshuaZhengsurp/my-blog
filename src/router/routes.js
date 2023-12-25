@@ -1,36 +1,36 @@
 import layoutHeaderAside from '@/layout/header-aside'
 
-import Index from '@/views/aries/system/index'
+import Index from '@/views/admin/system/index'
 
-import PostCategory from '@/views/aries/category/postCategory'
+import PostCategory from '@/views/admin/category/postCategory'
 
-import Tag from '@/views/aries/tag/tag'
+import Tag from '@/views/admin/tag/tag'
 
-import Post from '@/views/aries/post/post'
+import Post from '@/views/admin/post/post'
 
-import Comment from '@/views/aries/comment/comment'
+import Comment from '@/views/admin/comment/comment'
 
-import Page from '@/views/aries/page/page'
+import Page from '@/views/admin/page/page'
 
-import Journal from '@/views/aries/page/journal'
+import Journal from '@/views/admin/page/journal'
 
-import Gallery from '@/views/aries/page/gallery'
+import Gallery from '@/views/admin/page/gallery'
 
-import User from '@/views/aries/user/user'
+import User from '@/views/admin/user/user'
 
-import Setting from '@/views/aries/system/setting'
+import Setting from '@/views/admin/system/setting'
 
-import Links from '@/views/aries/link/links'
+import Links from '@/views/admin/link/links'
 
-import LinkCategory from '@/views/aries/category/linkCategory'
+import LinkCategory from '@/views/admin/category/linkCategory'
 
-import Navs from '@/views/aries/nav/navs'
+import Navs from '@/views/admin/nav/navs'
 
-import Attachment from '@/views/aries/system/attachment'
+import Attachment from '@/views/admin/system/attachment'
 
-import Theme from '@/views/aries/theme/theme'
+import Theme from '@/views/admin/theme/theme'
 
-import Doc from '@/views/aries/system/doc'
+import Doc from '@/views/admin/system/doc'
 
 import Log from '@/views/system/log'
 
@@ -38,13 +38,13 @@ import Refresh from '@/views/system/function/refresh'
 
 import Redirect from '@/views/system/function/redirect'
 
-import Login from '@/views/aries/auth/login'
+import Login from '@/views/admin/auth/login'
 
-import Register from '@/views/aries/auth/register'
+import Register from '@/views/admin/auth/register'
 
-import ForgetPwd from '@/views/aries/auth/forgetPwd'
+import ForgetPwd from '@/views/admin/auth/forgetPwd'
 
-import ResetPwd from '@/views/aries/auth/resetPwd'
+import ResetPwd from '@/views/admin/auth/resetPwd'
 
 import Error404 from '@/views/system/error/404'
 

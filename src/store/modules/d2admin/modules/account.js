@@ -1,6 +1,6 @@
 import { Message, MessageBox } from 'element-ui'
 import router from '@/router'
-import { authLogin } from '@/api/aries/auth'
+import { authLogin } from '@/api/admin/auth'
 
 export default {
   namespaced: true,

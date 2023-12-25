@@ -8,8 +8,8 @@ export default {
      * @param {Object} state state
      */
     versionShow () {
-      util.log.capsule('D2Admin', `v${process.env.VUE_APP_VERSION}`)
-      // admin.log('D2 Admin  https://github.com/d2-projects/d2-admin')
+      util.log.capsule('D2admin', `v${process.env.VUE_APP_VERSION}`)
+      // admin.log('D2 admin  https://github.com/d2-projects/d2-admin')
       // admin.log('D2 Crud   https://github.com/d2-projects/d2-crud')
       // admin.log('Document  https://d2.pub/zh/doc/d2-admin')
       // admin.log('请不要吝啬您的 star，谢谢 ~')

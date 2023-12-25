@@ -1,7 +1,7 @@
 import { find, assign } from 'lodash'
 
 const users = [
-  { username: 'console', password: 'console', uuid: 'admin-uuid', name: 'Admin' },
+  { username: 'console', password: 'console', uuid: 'admin-uuid', name: 'admin' },
   { username: 'editor', password: 'editor', uuid: 'editor-uuid', name: 'Editor' },
   { username: 'user1', password: 'user1', uuid: 'user1-uuid', name: 'User1' }
 ]

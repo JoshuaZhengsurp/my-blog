@@ -4,13 +4,13 @@
       info.name ? `你好 ${info.name}` : "未登录"
     }}</span>
     <el-dropdown-menu slot="dropdown">
-      <el-dropdown-item @click.native="logOff">
-        <d2-icon name="power-off" class="d2-mr-5" />
-        退出登录
-      </el-dropdown-item>
       <el-dropdown-item @click.native="toIndex">
         <d2-icon name="book" class="d2-mr-5" />
         博客首页
+      </el-dropdown-item>
+      <el-dropdown-item @click.native="logOff">
+        <d2-icon name="power-off" class="d2-mr-5" />
+        退出登录
       </el-dropdown-item>
     </el-dropdown-menu>
   </el-dropdown>
