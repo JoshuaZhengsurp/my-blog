@@ -1,16 +1,16 @@
 @echo off
 (
-echo "------deploying------"
+echo ------deploying------
 npm -v 
-echo "-----building-----"
+echo -----building-----
 npm run build
 
-echo "-----push code-----"
+echo -----push code-----
 
 git add .
 git commit -m 'deploy'
 git push
 
-echo "-----over-----"
+echo -----over-----
 )
 pause
