@@ -1,6 +1,7 @@
 @echo off
+(
 echo "------deploying------"
-npm -v && (
+npm -v 
 echo "-----building-----"
 npm run build
 
