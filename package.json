@@ -11,6 +11,7 @@
     "dist/*"
   ],
   "scripts": {
+    "deploy": "deploy.bat",
     "serve": "vue-cli-service serve --open",
     "start": "npm run serve",
     "dev": "npm run serve",
